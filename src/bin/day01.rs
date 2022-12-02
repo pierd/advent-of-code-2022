@@ -16,9 +16,10 @@ impl Problem for Day01 {
     }
 
     fn solve_part2(input: &<Self::Input as aoc_helpers::scaffold::Parse>::Parsed) -> Self::Part2 {
-        let mut totals: Vec<usize>  = input
-        .iter()
-        .map(|nums| nums.iter().copied().sum()).collect();
+        let mut totals: Vec<usize> = input
+            .iter()
+            .map(|nums| nums.iter().copied().sum())
+            .collect();
         totals.sort_unstable();
         totals.reverse();
         assert!(totals.len() >= 3);
