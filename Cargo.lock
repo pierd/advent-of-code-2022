@@ -31,7 +31,7 @@ checksum = "216261ddc8289130e551ddcd5ce8a064710c0d064a4d2895c67151c92b5443f6"
 [[package]]
 name = "aoc-helpers"
 version = "0.1.0"
-source = "git+https://github.com/pierd/aoc-helpers?rev=82a6b9e#82a6b9ebaa9c0f8c633f9f637249e8d5b15fb8a7"
+source = "git+https://github.com/pierd/aoc-helpers?rev=5f0572a#5f0572a421d45a5d59207cc4ea7091429f28dfbf"
 dependencies = [
  "anyhow",
 ]
