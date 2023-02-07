@@ -1,4 +1,7 @@
-use std::{cmp::Ordering, fmt::{Display, Write}};
+use std::{
+    cmp::Ordering,
+    fmt::{Display, Write},
+};
 
 use aoc_helpers::{prelude::*, scaffold::Parse};
 
@@ -39,7 +42,7 @@ impl Packet {
                     match (a_iter.next(), b_iter.next()) {
                         (None, None) => return Ordering::Equal,
                         (None, Some(_)) => return Ordering::Less,
-                        (Some(_), None) => return  Ordering::Greater,
+                        (Some(_), None) => return Ordering::Greater,
                         (Some(a), Some(b)) => {
                             let result = Self::compare(a, b);
                             if result != Ordering::Equal {
@@ -48,7 +51,7 @@ impl Packet {
                         }
                     }
                 }
-            },
+            }
             (Packet::List(a), Packet::Num(b)) => {
                 if let Some(a_first) = a.first() {
                     let result = Self::compare(a_first, &Packet::Num(*b));
@@ -110,7 +113,7 @@ impl Display for Packet {
                 f.write_char(']')?;
                 Ok(())
             }
-            Packet::Num(n) => n.fmt(f)
+            Packet::Num(n) => n.fmt(f),
         }
     }
 }
@@ -121,16 +124,20 @@ impl Problem for Day13 {
     type Part2 = usize;
 
     fn solve_part1(input: &<Self::Input as aoc_helpers::scaffold::Parse>::Parsed) -> Self::Part1 {
-        input.iter().enumerate().filter_map(|(idx, packets)| {
-            if Packet::compare(&packets[0], &packets[1]) == Ordering::Less {
-                Some(idx + 1)
-            } else {
-                None
-            }
-        }).sum()
+        input
+            .iter()
+            .enumerate()
+            .filter_map(|(idx, packets)| {
+                if Packet::compare(&packets[0], &packets[1]) == Ordering::Less {
+                    Some(idx + 1)
+                } else {
+                    None
+                }
+            })
+            .sum()
     }
 
-    fn solve_part2(input: &<Self::Input as aoc_helpers::scaffold::Parse>::Parsed) -> Self::Part2 {
+    fn solve_part2(_input: &<Self::Input as aoc_helpers::scaffold::Parse>::Parsed) -> Self::Part2 {
         Default::default()
     }
 }
@@ -181,7 +188,7 @@ mod tests {
         for l in SAMPLE.lines() {
             if !l.is_empty() {
                 let packet = Packet::parse(l).unwrap();
-                assert_eq!(l, format!("{}", packet));
+                assert_eq!(l, format!("{packet}"));
             }
         }
     }

@@ -9,6 +9,7 @@ const NEEDED: usize = 30000000;
 struct Day07;
 
 #[derive(Clone, Debug)]
+#[allow(clippy::upper_case_acronyms)]
 #[rematch]
 enum CLI {
     #[rematch(r"\$ cd /")]
